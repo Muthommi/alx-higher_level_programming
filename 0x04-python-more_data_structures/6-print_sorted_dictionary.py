@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
 def print_sorted_dictionary(a_dictionary):
-    keys = []
     if a_dictionary:
-       for a, b in a_dictionary.items():
-           keys.append(a)
+        keys = list(a_dictionary.keys())  
+        keys.sort()  
 
-       keys.sort()
-       for items in keys:
-           print("{}: {}".format(items, a_dictionary[items]))
+        for key in keys:
+            print("{}: {}".format(key, a_dictionary[key]))  
