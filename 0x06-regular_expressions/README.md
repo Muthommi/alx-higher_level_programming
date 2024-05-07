@@ -1,1 +1,1 @@
-This is a readme file for the regular expressions tasks
+This is a readme of the regular expressions project
