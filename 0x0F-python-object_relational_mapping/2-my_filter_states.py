@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-
 """
 This script displays all values in the states table where name matches the
 argument passed.
 
 """
+
 
 import MySQLdb
 import sys
@@ -15,7 +15,6 @@ def main():
     It connects to a MySQL database and retrieves states based on user input.
 
     """
-
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
