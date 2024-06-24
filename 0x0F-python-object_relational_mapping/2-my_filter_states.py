@@ -17,6 +17,11 @@ def main():
         sys.argv[3]: Database name
         sys.argv[4]: State name to search for
     """
+    if len(sys.argv) != 5:
+        print("Usage: ./2-my_filter_states.py <username> <password> "
+              "<database_name> <state_name>")
+        sys.exit(1)
+
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
@@ -32,16 +37,21 @@ def main():
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(query, (state_name,))
+    try:
+        query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+        cursor.execute(query, (state_name,))
 
-    rows = cursor.fetchall()
+        rows = cursor.fetchall()
 
-    for row in rows:
-        print(row)
+        for row in rows:
+            print(row)
 
-    cursor.close()
-    db.close()
+    except MySQLdb.Error as e:
+        print(f"Error executing SQL query: {e}")
+
+    finally:
+        cursor.close()
+        db.close()
 
 
 if __name__ == "__main__":
