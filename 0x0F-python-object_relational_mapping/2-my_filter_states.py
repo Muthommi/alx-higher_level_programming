@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """
-This script displays all values in the states table where name matches the
-argument passed.
-
+Displays all values in the states table of hbtn_0e_0_usa
+where name matches the argument passed.
 """
-
 
 import MySQLdb
 import sys
@@ -12,8 +10,12 @@ import sys
 
 def main():
     """
-    It connects to a MySQL database and retrieves states based on user input.
-
+    Connects to a MySQL database and retrieves states based on user input.
+    Arguments:
+        sys.argv[1]: MySQL username
+        sys.argv[2]: MySQL password
+        sys.argv[3]: Database name
+        sys.argv[4]: State name to search for
     """
     username = sys.argv[1]
     password = sys.argv[2]
