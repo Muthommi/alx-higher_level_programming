@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module prints the first state object from the database.
+This module lists all state objects containing letter 'a' from the database.
 """
 from sys import argv
 from sqlalchemy import create_engine
@@ -21,11 +21,14 @@ if __name__ == "__main__":
 
     session = Session()
 
-    first_state = session.query(State).order_by(State.id).first()
+    states_with_a = (
+        session.query(State)
+        .filter(State.name.like('%a%'))
+        .order_by(State.id)
+        .all()
+    )
 
-    if first_state:
-        print(f"{first_state.id}: {first_state.name}")
-    else:
-        print("Nothing")
+    for state in states_with_a:
+        print(f"{state.id}: {state.name}")
 
     session.close()
