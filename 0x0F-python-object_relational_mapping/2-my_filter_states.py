@@ -3,7 +3,6 @@
 Displays all values in the states table of hbtn_0e_0_usa
 where name matches the argument passed.
 """
-
 import MySQLdb
 import sys
 
@@ -43,8 +42,11 @@ def main():
 
         rows = cursor.fetchall()
 
-        for row in rows:
-            print(row)
+        if not rows:
+            print(f"No state found with name '{state_name}'")
+        else:
+            for row in rows:
+                print(row)
 
     except MySQLdb.Error as e:
         print(f"Error executing SQL query: {e}")
