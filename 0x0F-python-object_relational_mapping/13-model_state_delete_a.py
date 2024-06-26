@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 This script deletes all State objects with a name containing letter 'a'
-from the database
 """
 from sys import argv
 from sqlalchemy import create_engine
@@ -28,7 +27,6 @@ if __name__ == "__main__":
 
     for state in states_to_delete:
         session.delete(state)
-
     session.commit()
 
     session.close()
